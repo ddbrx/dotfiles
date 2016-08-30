@@ -105,7 +105,7 @@ unset color_prompt force_color_prompt
 #fi
 
 if [[ $(uname) == Darwin* ]]; then
-  alias ls='ls -alG'
+  alias ls='ls -G'
 else
   alias ls='ls --color=auto'
 fi
