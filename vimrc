@@ -2,6 +2,22 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set nocompatible 
+filetype off
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+" Nerdtree
+Plugin 'scrooloose/nerdtree'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
 
 " Undo
 set undodir=~/.vim/undo
@@ -58,15 +74,32 @@ set laststatus=2
 " Format the status line
 set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ cwd:\ %r%{getcwd()}%h\ \ \ Line:\ %l
 
+"Codestyle
+set cino=N-s,g0,+2s,l-s,i2s
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Returns true if paste mode is enabled
 function! HasPaste()
-    if &paste
-        return 'PASTE MODE  '
-    en
-    return ''
+	if &paste
+			return 'PASTE MODE  '
+	en
+	return ''
+
 endfunction
+
+" Plugins
+	" NERDTree
+		nnoremap <Bs> :<C-u>NERDTreeToggle<CR>
+"   let NERDTreeShowBookmarks=1
+"		let NERDTreeChDirMode=2
+"		let NERDTreeQuitOnOpen=1
+"		let NERDTreeShowHidden=1
+"   let NERDTreeKeepTreeInNewTab=0
+"		" Disable display of the 'Bookmarks' label and 'Press ? for help' text
+"		let NERDTreeMinimalUI=1
+		" Use arrows instead of + ~ chars when displaying directories
+"		let NERDTreeDirArrows=1
+"		let NERDTreeBookmarksFile= $HOME . '/.vim/.NERDTreeBookmarks'
 
