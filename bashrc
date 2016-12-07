@@ -106,8 +106,10 @@ fi
 
 export EDITOR=vim
 export LC_ALL="en_US.UTF-8"
+export PYTHONPATH="$HOME/rslibrary_py"
 
 source ~/.git-completion.bash
 alias mkbuild='rm -rf build && mkdir build && cd build && cmake .. && make -j8'
 alias make8='make -j8'
 alias clmake='cmake .. -DCMAKE_CXX_COMPILER=/usr/bin/clang++-3.8 && make -j8'
+

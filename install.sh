@@ -15,6 +15,8 @@ function link_if_missing()
 DIR=$(dirname $0)
 (cd $DIR; git submodule update --init)
 
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
 link_if_missing $DIR/vim          $HOME/.vim
 link_if_missing $DIR/gitconfig    $HOME/.gitconfig
 link_if_missing $DIR/vimrc        $HOME/.vimrc
