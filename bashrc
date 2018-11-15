@@ -117,5 +117,4 @@ alias ssh='ssh -XA'
 alias supervisorctl='supervisorctl -c ~/supervisor_savers/${HOSTNAME}/supervisor-${HOSTNAME}.conf'
 
 . ~/.git-completion.bash
-. /usr/local/bin/virtualenvwrapper.sh
 
