@@ -107,14 +107,19 @@ fi
 export EDITOR=vim
 export LC_ALL="en_US.UTF-8"
 export PYTHONPATH="$HOME/rslibrary_py"
+export GOPATH="$HOME/go"
+export GOROOT="/usr/lib/go"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+export KUBECONFIG=$HOME/admin.conf
 
 source ~/.git-completion.bash
 set HOSTNAME=$(hostname)
-alias mkbuild='rm -rf build && mkdir build && cd build && cmake .. && make -j8'
-alias make8='make -j8'
-alias clmake='cmake .. -DCMAKE_CXX_COMPILER=/usr/bin/clang++-3.8 && make -j8'
+alias mkbuild='mkdir -p build && cd build && cmake .. && make -j20'
+alias mk='make -j20'
+alias mkb='mkbuild'
+alias mkt='mk tests'
 alias ssh='ssh -XA'
 alias supervisorctl='supervisorctl -c ~/supervisor_savers/${HOSTNAME}/supervisor-${HOSTNAME}.conf'
 
-. ~/.git-completion.bash
-
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

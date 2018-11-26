@@ -13,6 +13,8 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 " Nerdtree
 Plugin 'scrooloose/nerdtree'
+Plugin 'vim-scripts/UltiSnips'
+Plugin 'junegunn/fzf'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -102,4 +104,41 @@ endfunction
 		" Use arrows instead of + ~ chars when displaying directories
 "		let NERDTreeDirArrows=1
 "		let NERDTreeBookmarksFile= $HOME . '/.vim/.NERDTreeBookmarks'
+
+
+" UltiSnips
+		let g:UltiSnipsExpandTrigger="<tab>"
+		let g:UltiSnipsJumpForwardTrigger="<tab>"
+		let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+
+" ,v
+		" Open the .vimrc in a new tab
+		nnoremap <leader>v :<C-u>tabedit $MYVIMRC<CR>
+		:cabbrev e NERDTreeClose<CR>:e!
+
+" Switch tabs with <Tab>
+		nnoremap <Tab> gt
+		nnoremap <S-Tab> gT
+		" FZF                                                                                       
+		let g:fzf_history_dir = '~/.local/share/fzf-history'                                        
+		function! s:find_root()                                                                     
+			for vcs in ['.git', '.svn', '.hg']                                                        
+				let dir = finddir(vcs.'/..', ';')                                                       
+				if !empty(dir)                                                                          
+					execute 'FZF' dir                                                                     
+					return                                                                                
+				endif                                                                                   
+			endfor                                                                                    
+			FZF                                                                                       
+		endfunction                                                                                 
+																																														
+		command! FZFR call s:find_root()                                                            
+		nnoremap <C-p> :FZFR<CR> 
+
+" Disable arrows
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
 
