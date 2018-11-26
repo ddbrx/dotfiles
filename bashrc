@@ -109,17 +109,25 @@ export LC_ALL="en_US.UTF-8"
 export PYTHONPATH="$HOME/rslibrary_py"
 export GOPATH="$HOME/go"
 export GOROOT="/usr/lib/go"
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 export KUBECONFIG=$HOME/admin.conf
+export NVM_DIR="$HOME/.nvm"
 
-source ~/.git-completion.bash
 set HOSTNAME=$(hostname)
-alias mkbuild='mkdir -p build && cd build && cmake .. && make -j20'
 alias mk='make -j20'
-alias mkb='mkbuild'
 alias mkt='mk tests'
-alias ssh='ssh -XA'
+alias mkg='cmake .. && mk'
+alias mkc='cmake .. -DCMAKE_CXX_COMPILER=/usr/bin/clang++-3.8 && mk'
+alias mkdg='mkdir -p build && cd build && mkg'
+alias mkdc='mkdir -p build && cd build && mkc'
+alias ssh='ssh -A'
+alias python="/usr/bin/python3"
 alias supervisorctl='supervisorctl -c ~/supervisor_savers/${HOSTNAME}/supervisor-${HOSTNAME}.conf'
 
+data_savers() {
+  ssh -XAt $1 "sudo su data_savers"
+}
+
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+source ~/.git-completion.bash
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
