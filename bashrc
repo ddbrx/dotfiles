@@ -106,7 +106,7 @@ fi
 
 export EDITOR=vim
 export LC_ALL="en_US.UTF-8"
-export PYTHONPATH="$HOME/rslibrary_py"
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 export GOPATH="$HOME/go"
 export GOROOT="/usr/lib/go"
 export KUBECONFIG=$HOME/admin.conf
@@ -116,18 +116,20 @@ set HOSTNAME=$(hostname)
 alias mk='make -j20'
 alias mkt='mk tests'
 alias mkg='cmake .. && mk'
-alias mkc='cmake .. -DCMAKE_CXX_COMPILER=/usr/bin/clang++-3.8 && mk'
-alias mkdg='mkdir -p build && cd build && mkg'
-alias mkdc='mkdir -p build && cd build && mkc'
-alias ssh='ssh -A'
+alias mkc='cmake .. -DCMAKE_CXX_COMPILER=/usr/bin/clang++-7 && mk'
+alias mkbg='mkdir -p build && cd build && mkg'
+alias mkbc='mkdir -p build && cd build && mkc'
+alias mkb='mkbg'
+alias ssh='ssh -XA '
 alias python="/usr/bin/python3"
 alias supervisorctl='supervisorctl -c ~/supervisor_savers/${HOSTNAME}/supervisor-${HOSTNAME}.conf'
 
 data_savers() {
-  ssh -XAt $1 "sudo su data_savers"
+  ssh -XAt $1 "sudo su data_savers && cd"
 }
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 source ~/.git-completion.bash
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

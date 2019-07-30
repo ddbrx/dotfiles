@@ -15,6 +15,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'vim-scripts/UltiSnips'
 Plugin 'junegunn/fzf'
+Plugin 'tpope/vim-abolish.git'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
