@@ -120,12 +120,12 @@ alias mkc='cmake .. -DCMAKE_CXX_COMPILER=/usr/bin/clang++-7 && mk'
 alias mkbg='mkdir -p build && cd build && mkg'
 alias mkbc='mkdir -p build && cd build && mkc'
 alias mkb='mkbg'
-alias ssh='ssh -XA '
+alias ssh='ssh -A '
 alias python="/usr/bin/python3"
 alias supervisorctl='supervisorctl -c ~/supervisor_savers/${HOSTNAME}/supervisor-${HOSTNAME}.conf'
 
 data_savers() {
-  ssh -XAt $1 "sudo su data_savers && cd"
+  ssh -At $1 "sudo su data_savers && cd"
 }
 
 source ~/.git-completion.bash
