@@ -106,11 +106,13 @@ fi
 
 export EDITOR=vim
 export LC_ALL="en_US.UTF-8"
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 export GOPATH="$HOME/go"
 export GOROOT="/usr/lib/go"
 export KUBECONFIG=$HOME/admin.conf
 export NVM_DIR="$HOME/.nvm"
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Devel
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 
 set HOSTNAME=$(hostname)
 alias mk='make -j20'
@@ -131,5 +133,6 @@ data_savers() {
 source ~/.git-completion.bash
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
+source /usr/local/bin/virtualenvwrapper.sh
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
