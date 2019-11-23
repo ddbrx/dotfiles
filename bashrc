@@ -113,11 +113,13 @@ export NVM_DIR="$HOME/.nvm"
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Devel
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+export PATH="$PATH:$HOME/bin"
 
 alias python="/usr/bin/python3"
 
 source ~/.git-completion.bash
-
 source /usr/local/bin/virtualenvwrapper.sh
+source /home/dmitriyd/.bazel/bin/bazel-complete.bash
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
