@@ -43,7 +43,7 @@ esac
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
-#force_color_prompt=yes
+force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
@@ -114,24 +114,9 @@ export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Devel
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 
-set HOSTNAME=$(hostname)
-alias mk='make -j20'
-alias mkt='mk tests'
-alias mkg='cmake .. && mk'
-alias mkc='cmake .. -DCMAKE_CXX_COMPILER=/usr/bin/clang++-7 && mk'
-alias mkbg='mkdir -p build && cd build && mkg'
-alias mkbc='mkdir -p build && cd build && mkc'
-alias mkb='mkbg'
-alias ssh='ssh -A '
 alias python="/usr/bin/python3"
-alias supervisorctl='supervisorctl -c ~/supervisor_savers/${HOSTNAME}/supervisor-${HOSTNAME}.conf'
-
-data_savers() {
-  ssh -At $1 "sudo su data_savers && cd"
-}
 
 source ~/.git-completion.bash
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 source /usr/local/bin/virtualenvwrapper.sh
 
